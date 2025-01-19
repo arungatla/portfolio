@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-const themeToggle = () => {
+const ThemeToggle = () => {
     const { theme, setTheme } = useTheme();
   return (
     <Button variant={'ghost'} size={'icon'} className="rounded-full" onClick={()=>setTheme(theme === "light" ? "dark" : "light")}>
@@ -14,4 +14,4 @@ const themeToggle = () => {
   )
 }
 
-export default themeToggle;
+export default ThemeToggle;
