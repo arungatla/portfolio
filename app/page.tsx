@@ -3,12 +3,13 @@
 import ThemeToggle from "@/components/theme-toggle";
 import Image from "next/image";
 import pp from "@/public/propic.jpg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import {  FaX  } from "react-icons/fa6";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 // import { Card, CardContent } from "@/components/ui/card";
 
 
@@ -26,6 +27,15 @@ import { useState } from "react";
 export default function Home() {
   
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const downloadResume = () => {
     setIsDownloading(true);
@@ -41,6 +51,12 @@ export default function Home() {
     }, 1000);
   };
 
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
 
 
   return (
@@ -52,7 +68,10 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="flex justify-between items-center mb-12"
         >
-          <div className="w-20 h-20 rounded-full overflow-hidden">
+          <div
+            className="w-20 h-20 rounded-full overflow-hidden"
+            onClick={openModal}
+          >
             <Image
               src={pp}
               alt="Profile Picture"
@@ -61,6 +80,38 @@ export default function Home() {
           </div>
           <ThemeToggle />
         </motion.header>
+        <AnimatePresence>
+          {isModalOpen && (
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+              onClick={handleOutsideClick}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="bg-white dark:bg-black p-4 rounded-lg relative max-w-sm w-full"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <button
+                  onClick={closeModal}
+                  className="absolute top-2 right-2 text-black dark:text-white"
+                >
+                  <FaTimes size={20} />
+                </button>
+                <Image
+                  src={pp}
+                  alt="Profile Picture"
+                  className="w-full h-auto rounded-lg"
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <main className="space-y-10">
           <section className="space-y-10">
@@ -120,7 +171,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="flex items-center gap-3"
             >
-              <Button className="rounded-full bg-gradient-to-r from-rose-600 to-indigo-600 text-white transition-transform hover:scale-105" onClick={downloadResume}>
+              <Button
+                className="rounded-full bg-gradient-to-r from-rose-600 to-indigo-600 text-white transition-transform hover:scale-105"
+                onClick={downloadResume}
+              >
                 {isDownloading ? "Downloading..." : "Download Resume"}
               </Button>
               <Link
