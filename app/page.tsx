@@ -7,22 +7,42 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaTwitter, FaYoutube } from "react-icons/fa6";
-import { Card, CardContent } from "@/components/ui/card";
+import {  FaX  } from "react-icons/fa6";
+import { useState } from "react";
+// import { Card, CardContent } from "@/components/ui/card";
 
 
 // importing images dummy for now
-import i1 from "@/public/1.png";
-import i2 from "@/public/2.jpg";
-import i3 from "@/public/3.png";
-import i4 from "@/public/4.png";
-import i5 from "@/public/5.png";
-import i6 from "@/public/6.jpg";
+// import i1 from "@/public/1.png";
+// import i2 from "@/public/2.jpg";
+// import i3 from "@/public/3.png";
+// import i4 from "@/public/4.png";
+// import i5 from "@/public/5.png";
+// import i6 from "@/public/6.jpg";
 
 
 
 
 export default function Home() {
+  
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const downloadResume = () => {
+    setIsDownloading(true);
+    setTimeout(() => {
+      
+      const link = document.createElement("a");
+      link.href = "/GatlaArun.pdf"; // Replace with the actual path to your resume
+      link.download = "Arun_Gatla_Resume.pdf"; // Replace with the desired file name
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setIsDownloading(false);
+    }, 1000);
+  };
+
+
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       <div className="mx-auto max-w-xl px-4 py-20">
@@ -100,33 +120,36 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="flex items-center gap-3"
             >
-              <Button className="rounded-full bg-gradient-to-r from-rose-600 to-indigo-600 text-white transition-transform hover:scale-105">
-                Resume
+              <Button className="rounded-full bg-gradient-to-r from-rose-600 to-indigo-600 text-white transition-transform hover:scale-105" onClick={downloadResume}>
+                {isDownloading ? "Downloading..." : "Download Resume"}
               </Button>
               <Link
-                href="#"
+                href="https://github.com/arungatla"
+                target="_blank"
                 className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
               >
                 <FaGithub className="w-6 h-6 " />
               </Link>
               <Link
-                href="/projects"
+                href="https://www.linkedin.com/in/arungatla/"
+                target="_blank"
                 className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
               >
                 <FaLinkedin className="w-6 h-6 " />
               </Link>
               <Link
-                href="/projects"
+                href="https://x.com/iamarungatla"
+                target="_blank"
                 className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
               >
-                <FaTwitter className="w-6 h-6 " />
+                <FaX className="w-6 h-6 " />
               </Link>
-              <Link
+              {/* <Link
                 href="/projects"
                 className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
               >
                 <FaYoutube className="w-6 h-6 " />
-              </Link>
+              </Link> */}
             </motion.div>
           </section>
           <motion.section
@@ -202,7 +225,12 @@ export default function Home() {
             <h2 className="text-3xl font-semibold bg-gradient-to-r from-rose-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent inline-block">
               Projects
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="text-center py-10">
+              <p className="text-gray-600 dark:text-gray-400 text-lg">
+                Exciting projects are on the way. Stay tuned!
+              </p>
+            </div>
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <Card className="bg-gray-50 dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105 cursor-pointer">
                 <CardContent className="p-4">
                   <Image src={i1} alt="project image 1" className="rounded-lg mb-4" />
@@ -287,9 +315,9 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
             <p className="text-gray-500">
-                &copy; {new Date().getFullYear()} Arun Gatla. All rights reserved.
+              &copy; {new Date().getFullYear()} Arun Gatla. All rights reserved.
             </p>
           </motion.section>
         </main>
