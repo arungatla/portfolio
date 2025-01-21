@@ -42,7 +42,7 @@ export default function Home() {
     setTimeout(() => {
       
       const link = document.createElement("a");
-      link.href = "/GatlaArun.pdf"; // Replace with the actual path to your resume
+      link.href = "/Resume-v2-21jan.pdf"; // Replace with the actual path to your resume
       link.download = "Arun_Gatla_Resume.pdf"; // Replace with the desired file name
       document.body.appendChild(link);
       link.click();
@@ -281,7 +281,7 @@ export default function Home() {
             </h2>
             <div className="text-center py-10">
               <p className="text-gray-600 dark:text-gray-400 text-lg">
-                Exciting projects are on the way. Stay tuned!
+                Exciting projects are on the way.
               </p>
             </div>
             {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
