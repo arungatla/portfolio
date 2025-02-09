@@ -7,11 +7,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import {  FaX  } from "react-icons/fa6";
+import { FaX } from "react-icons/fa6";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-// import { Card, CardContent } from "@/components/ui/card";
+import SplitText from "./components/SplitText";
+import BlurText from "./components/BlurText";
+import TextPressure from "./components/TextPressure";
+import ClickSpark from "./components/ClickSpark";
 
+
+
+// import { Card, CardContent } from "@/components/ui/card";
 
 // importing images dummy for now
 // import i1 from "@/public/1.png";
@@ -21,11 +27,7 @@ import { FaTimes } from "react-icons/fa";
 // import i5 from "@/public/5.png";
 // import i6 from "@/public/6.jpg";
 
-
-
-
 export default function Home() {
-  
   const [isDownloading, setIsDownloading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -40,9 +42,8 @@ export default function Home() {
   const downloadResume = () => {
     setIsDownloading(true);
     setTimeout(() => {
-      
       const link = document.createElement("a");
-      link.href = "/Resume-v2-21jan.pdf"; // Replace with the actual path to your resume
+      link.href = "/AGResume-1.pdf"; // Replace with the actual path to your resume
       link.download = "Arun_Gatla_Resume.pdf"; // Replace with the desired file name
       document.body.appendChild(link);
       link.click();
@@ -56,11 +57,16 @@ export default function Home() {
       closeModal();
     }
   };
-
-
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
+  //  const handleAnimationComplete = () => {
+  //    console.log("Animation completed!");
+  //  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+     
       <div className="mx-auto max-w-xl px-4 py-20">
         <motion.header
           initial={{ opacity: 0, x: -100 }}
@@ -68,6 +74,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="flex justify-between items-center mb-12"
         >
+         
           <div
             className="w-20 h-20 rounded-full overflow-hidden"
             onClick={openModal}
@@ -121,9 +128,45 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className=" space-y-1"
             >
+              {/* <SplitText
+                text="Arun Gatla"
+                className="text-center text-4xl font-bold bg-gradient-to-r from-rose-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent inline-block text-white"
+                delay={150}
+                animationFrom={{
+                  opacity: 0,
+                  transform: "translate3d(0,50px,0)",
+                }}
+                animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                easing="easeOutCubic"
+                threshold={0.2}
+                rootMargin="-50px"
+                onLetterAnimationComplete={handleAnimationComplete}
+              /> */}
               <h1 className="text-4xl font-bold bg-gradient-to-r from-rose-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent inline-block">
                 Arun Gatla
               </h1>
+              {/* <div style={{ position: "relative", height: "100px" }}>
+                <TextPressure
+                  text="Arun Gatla"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={36}
+                />
+              </div> */}
+              {/* <BlurText
+                text="Arun Gatla"
+                delay={150}
+                animateBy="words"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
+                className="text-2xl mb-8 text-center text-4xl font-bold bg-gradient-to-r from-rose-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent inline-block text-white"
+              /> */}
               <p className="text-gray-600 dark:text-gray-400 ">
                 Full Stack Developer
               </p>
@@ -376,6 +419,7 @@ export default function Home() {
           </motion.section>
         </main>
       </div>
+    
     </div>
   );
 }
