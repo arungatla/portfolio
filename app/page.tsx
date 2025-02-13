@@ -140,15 +140,15 @@ export default function Home() {
               </h2>
               <p className="test-gray-600 text-sm dark:text-gray-400 max-w-2xl">
                 Expert in building web apps with{" "}
-                <span className="text-black dark:text-white">Angular</span> and{" "}
-                <span className="text-black dark:text-white">React</span> and{" "}
-                <span className="text-black dark:text-white">Node.js</span> and{" "}
-                <span className="text-black dark:text-white">Javascript</span>{" "}
-                and{" "}
-                <span className="text-black dark:text-white">TypeScript</span>{" "}
-                and{" "}
-                <span className="text-black dark:text-white">TailwindCSS</span>{" "}
-                and <span className="text-black dark:text-white">Next.js</span>{" "}
+                <span className="text-black dark:text-white">Angular</span> ,
+                <span className="text-black dark:text-white">React</span> ,
+                <span className="text-black dark:text-white">Node.js</span> ,
+                <span className="text-black dark:text-white">Javascript</span>,
+             
+                <span className="text-black dark:text-white">TypeScript</span>,
+                
+                <span className="text-black dark:text-white">TailwindCSS</span>,
+                 <span className="text-black dark:text-white">Next.js</span>
                 <span className="text-black dark:text-white">
                   ,Python(Flask, FastAPI), AWS, and microservices.
                 </span>
