@@ -58,7 +58,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-     
       <div className="mx-auto max-w-xl px-4 py-20">
         <motion.header
           initial={{ opacity: 0, x: -100 }}
@@ -66,7 +65,6 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="flex justify-between items-center mb-12"
         >
-         
           <div
             className="w-20 h-20 rounded-full overflow-hidden"
             onClick={openModal}
@@ -120,12 +118,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className=" space-y-1"
             >
-             
               <h1 className="text-4xl font-bold bg-gradient-to-r from-rose-600 via-indigo-500 to-sky-500 bg-clip-text text-transparent inline-block">
                 Arun Gatla
               </h1>
-           
-              
+
               <p className="text-gray-600 dark:text-gray-400 ">
                 Full Stack Developer
               </p>
@@ -154,7 +150,7 @@ export default function Home() {
                 <span className="text-black dark:text-white">TailwindCSS</span>{" "}
                 and <span className="text-black dark:text-white">Next.js</span>{" "}
                 <span className="text-black dark:text-white">
-                  Python, AWS, and microservices.
+                  ,Python(Flask, FastAPI), AWS, and microservices.
                 </span>
               </p>
               <p className="test-gray-600 text-sm dark:text-gray-400 max-w-2xl">
@@ -164,7 +160,7 @@ export default function Home() {
                 have also worked with JavaScript, TypeScript, TailwindCSS, and
                 Next.js. I have experience in building RESTful APIs and
                 microservices with Node.js and Express. I have also worked with
-                Python, AWS, and microservices.
+                Python(Flask, FastAPI), AWS, and microservices.
               </p>
             </motion.div>
             <motion.div
@@ -231,10 +227,10 @@ export default function Home() {
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
                 I am working as a Full Stack Developer at Accenture. I am
-                responsible for building web applications with Angular, React,
-                and Node.js. I am also responsible for building RESTful APIs and
-                microservices with Node.js and Express. I have also worked with
-                Python, AWS, and microservices.
+                responsible for building web applications with Angular,
+                React,Python(Flask, FastAPI) and Node.js. I am also responsible
+                for building RESTful APIs and microservices with Node.js and
+                Python(Flask, FastAPI). I have also worked with  AWS.
               </p>
             </div>
           </motion.section>
@@ -378,7 +374,6 @@ export default function Home() {
           </motion.section>
         </main>
       </div>
-    
     </div>
   );
 }
